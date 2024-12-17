@@ -1,7 +1,7 @@
 import pandas as pd
 import plotly.express as px
 
-musicdf = pd.read_csv('./spotify_songs.csv')
+musicdf = pd.read_csv('./data/spotify_songs.csv')
 
 #group by genres
 sumOfGenres = musicdf.groupby(['playlist_genre']).count()
