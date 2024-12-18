@@ -13,7 +13,10 @@ def one_hot_encode(df, column):
         encoded = pd.get_dummies(df[column], prefix=column)
         return encoded
 
-def prepaData(df):
+def prepaData(df, id_music):
+
+    track_id_column = df['track_id']  # Conserver une copie de 'track_id'
+
     # Step 2: Drop unnecessary columns except 'track_name' and 'track_popularity'
     columns_to_drop = [
         'track_name', 'track_id', 'track_artist', 'track_album_id',
@@ -46,7 +49,13 @@ def prepaData(df):
     numerical_columns = final_df.columns  # All remaining columns are numerical now
     final_df[numerical_columns] = min_max_normalize(final_df[numerical_columns])
 
-    return final_df, track_names, Popularity_Category
+    try:
+        track_index = track_id_column[track_id_column == id_music].index[0]
+        track_row = final_df.loc[track_index]
+    except IndexError:
+        track_row = None  # Si l'id n'est pas trouvé
+
+    return final_df, track_names, Popularity_Category, track_row
 
 def knn(data, query, k, categList):
     """
