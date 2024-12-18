@@ -19,7 +19,7 @@ def __main__():
         data = pd.read_csv("data/spotify_songs_with_popularity.csv", low_memory=False)
 
         # Prepare the data
-        data, track_names, Popularity_Category = prepaData(data)
+        data, track_names, Popularity_Category, q = prepaData(data)
 
         # Define a query
         query = data.iloc[0]

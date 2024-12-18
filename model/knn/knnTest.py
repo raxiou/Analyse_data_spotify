@@ -16,7 +16,7 @@ def __main__():
     data = pd.read_csv("data/spotify_songs_with_popularity.csv", low_memory=False)
 
     # Préparer les données
-    data, track_names, Popularity_Category = knn.prepaData(data)
+    data, track_names, Popularity_Category, q = knn.prepaData(data)
 
     # Diviser les données en ensemble d'entraînement et de test
     dataTest = data.sample(frac=0.05)

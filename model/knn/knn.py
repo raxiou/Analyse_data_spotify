@@ -13,7 +13,7 @@ def one_hot_encode(df, column):
         encoded = pd.get_dummies(df[column], prefix=column)
         return encoded
 
-def prepaData(df, id_music):
+def prepaData(df, id_music = None):
 
     track_id_column = df['track_id']  # Conserver une copie de 'track_id'
 
